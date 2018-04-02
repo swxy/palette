@@ -14,3 +14,35 @@ function bind (fn, ctx) {
   return boundFn
 }
 ```
+
+
+
+# 驼峰命令&短横线命名(camelCase vs. kebab-case)
+```js
+/**
+ * Camelize a hyphen-delimited string.
+ */
+var camelizeRE = /-(\w)/g;
+var camelize = function (str) {
+  return str.replace(camelizeRE, function (_, c) { return c ? c.toUpperCase() : ''; })
+};
+
+/**
+ * Capitalize a string.
+ */
+var capitalize = function (str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+};
+
+/**
+ * Hyphenate a camelCase string.
+ */
+var hyphenateRE = /([^-])([A-Z])/g;
+var hyphenate = function (str) {
+  return str
+    .replace(hyphenateRE, '$1-$2')
+    .replace(hyphenateRE, '$1-$2')
+    .toLowerCase()
+};
+// 为何需要使用两个replace函数？
+```
